@@ -9,6 +9,8 @@ Se necesita R y una IDE apropiada (por ejemplo, RStudio).
 - Abre el proyecto "cadizVUTMapas.Rproj".
 - Ejecuta el script "maps_1.R"
 
+Para ejecutar algunos mapas es necesario descargar el [siguiente shapefile](https://drive.google.com/file/d/1cN2Dy67oGCOybHoM038LieZ1pWjcPDtL/view?usp=sharing) y guardarlo en el directorio ds-codigos-postales-master/data.
+
 # Output
 El código genera 7 mapas.
 
