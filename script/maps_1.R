@@ -25,7 +25,6 @@ x_limits <- c(-6.31, -6.25) # longitude of Cádiz
 y_limits <- c(36.49, 36.55)  # latitude of Cádiz
 
 # Data Cleaning ----
-## Summarise by postcode ----
 #fix 11103 postcode does not exist-> 11003
 vft <- vft %>% mutate(CODIGO_POSTAL = ifelse(CODIGO_POSTAL==11103, 11003, CODIGO_POSTAL)) %>% 
   mutate(CODIGO_POSTAL = as.character(CODIGO_POSTAL))
@@ -79,7 +78,7 @@ vft$X_3 <- lon
 vft$Y_3 <- lat
 
 
-## SHP: filter Cádiz postcodes -> 11001 - 11071 ----
+## SHP: filter Cádiz postcodes -> 11001 - 11012 ----
 cd_posts <- c(as.character(seq(11001, 11012, 1)))
 shp_cd <- shp %>% 
   filter(COD_POSTAL %in% cd_posts)
@@ -151,7 +150,7 @@ vut_map <- leaflet(data = vft) %>%
                    weight = 2,
                    fillOpacity = 0.7,
                    fillColor = ifelse(vft$TIPO_VIVIENDA == "COMPLETA", "#ffd39b", "#f57a7a"),
-                   color = "black",# Pastel blue color
+                   color = "black",
                    stroke = TRUE,
                    popup = ~paste(
                      "Código de Registro: ", COD_REGISTRO,
@@ -203,9 +202,9 @@ map6a <- ggplot() +
   shadow_mark() +
   labs(title = 'Proliferación de VUTs a lo largo del tiempo: {frame_time}') +
   theme_void() +
-  theme(legend.position = "none") # Customize the theme as needed
+  theme(legend.position = "none")
 
-# Animated GIF
+# Exportar GIF
 anim_save("./output/touristic_apartments_yearly.gif", map6a, fps = 10, renderer = gifski_renderer(), width=800, height=1000)
 
 
@@ -219,7 +218,7 @@ map6b <- ggplot() +
   shadow_mark() +
   labs(title = 'Proliferación de VUTs a lo largo del tiempo: {frame_time}') +
   theme_void() +
-  theme(legend.position = "none") # Customize the theme as needed
+  theme(legend.position = "none")
 
-# Create the animated GIF
+# Exportar GIF
 anim_save("./output/touristic_apartments_dayByDay.gif", map6b, nframes = 2400, fps = 50, renderer = gifski_renderer(), width=800, height=1000)
