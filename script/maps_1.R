@@ -97,10 +97,6 @@ shp_df <- vft_pc %>%
 # Convertir en objeto geométrico
 shp_df <- st_as_sf(shp_df)
 
-#Lo mismo con vft_sf: coordinate system = EPSG:4258 (Europa)
-vft_sf <- st_as_sf(vft %>% filter(!is.na(Y_3)), coords = c("X_3", "Y_3"), crs = 4258)
-
-
 #  ----------------------- Data cleaning done!
 # input para mapas: shp_df <- polígonos de códigos postales de Cádiz con datos de VUTs por código postal
 #                   shp_cd <- polígonos de códigos postales de Cádiz sin datos 
